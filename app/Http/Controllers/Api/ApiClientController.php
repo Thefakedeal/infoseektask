@@ -27,7 +27,26 @@ class ApiClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'gender' => 'required|in:male,female,others,n/a',
+            'phone' => 'required|numeric|digits:10',
+            'email' => 'required|email',
+            'address' => 'required|string',
+            'nationality' => 'required|string',
+            'dob' => 'required|date',
+            'education' => 'required|string',
+            'mode_of_contact' => 'required|in:email,phone,none',
+        ]);
+
+        $client = $request->only([
+            'name', 'gender', 'phone', 'email',
+            'address', 'nationality', 'dob', 'education', 'mode_of_contact'
+        ]);
+        if (CSV::insert(base_path('resources/files/csv/clients.csv'), $client)) {
+            return response(['message' => 'Record Inserted'], 201);
+        }
+        return response(['message' => 'Record Failed To Insert'], 500);
     }
 
     /**
