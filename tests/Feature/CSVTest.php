@@ -32,4 +32,8 @@ class CSVTest extends TestCase
 
         $this->assertTrue(CSV::insert(base_path('resources/files/csv/clients.csv'), $client));
     }
+
+    public function test_read(){
+        $this->assertTrue(CSV::read(base_path('resources/files/csv/clients.csv')) != false);
+    } 
 }
