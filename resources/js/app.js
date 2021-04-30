@@ -29,7 +29,12 @@ window.Vue = require('vue').default;
 
 
 import VueRouter from 'vue-router'
+Vue.use(VueRouter);
+
+import router from './router'
+
 
 const app = new Vue({
     el: '#app',
+    router
 });
