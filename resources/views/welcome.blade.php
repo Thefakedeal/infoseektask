@@ -22,7 +22,9 @@
         </style>
     </head>
     <body class="antialiased">
-        <div id="app">
+        <div id="app">      
+            <router-link v-bind:to="{name:'users',}"> Home</router-link>
+            <router-link v-bind:to="{name:'users.create',}"> Create</router-link>
             <router-view> </router-view>
         </div>
     </body>

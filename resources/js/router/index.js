@@ -1,10 +1,17 @@
 import VueRouter from 'vue-router'
 import Users from '../components/Users.vue'
+import CreateUser from '../components/CreateUser.vue'
+
 const routes = [
     {
         path: '/',
         name: 'users',
         component: Users,
+    },
+    {
+        path: '/create',
+        name: 'users.create',
+        component: CreateUser,
     },
 ];
 
